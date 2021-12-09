@@ -1,0 +1,74 @@
+{
+  "name": "nodejs-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage true",
+    "lint": "eslint . --ext js",
+    "lint:fix": "eslint . --ext js --fix",
+    "lint-staged": "lint-staged"
+  },
+  "keywords": [
+    "study",
+    "node",
+    "nodejs"
+  ],
+  "author": "Elio Severo Junior (Elio Eti Br)",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^7.0.0",
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.3",
+    "jest-junit": "^13.0.0",
+    "jest-extended": "^1.2.0",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ],
+    "coverageReporters": [
+      "cobertura",
+      "json",
+      "text",
+      "lcov"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "roots": [
+      "src"
+    ],
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 70,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  },
+  "jest-junit": {
+    "outputDirectory": "test-results/",
+    "outputName": "junit.xml",
+    "usePathForSuiteName": "true"
+  }
+}
