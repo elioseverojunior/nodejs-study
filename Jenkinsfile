@@ -30,18 +30,22 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    log.info 'Starting'
-                    sh 'npm install'
-                    log.info 'Done!'
+                    ansiColor('xterm') {
+                        log.info 'Starting'
+                        sh 'npm install'
+                        log.info 'Done!'
+                    }
                 }
             }
         }
         stage('Tests') {
             steps {
                 script {
-                    log.info 'Starting'
-                    sh 'npm test'
-                    log.info 'Done!'
+                    ansiColor('xterm') {
+                        log.info 'Starting'
+                        sh 'npm test'
+                        log.info 'Done!'
+                    }
                 }
             }
         }
@@ -49,7 +53,7 @@ pipeline {
     post {
         always {
             script {
-                archiveArtifacts allowEmptyArchive: true, artifacts: "coverage/**/*.*", fingerprint: true
+                archiveArtifacts allowEmptyArchive: true, artifacts: "**/test-results/**/*.*", fingerprint: true
                 junit allowEmptyResults: true, testResults: "**/test-results/junit.xml"
             }
         }

@@ -49,7 +49,7 @@
     ],
     "verbose": true,
     "collectCoverage": true,
-    "coverageDirectory": "coverage",
+    "coverageDirectory": "test-results/",
     "collectCoverageFrom": [
       "src/**"
     ],
