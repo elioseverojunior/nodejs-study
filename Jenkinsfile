@@ -1,4 +1,4 @@
-package com.passeidireto
+package br.eti.elio
 
 @Library('CommonLib@main') _
 
@@ -11,7 +11,16 @@ currentBuild.result = 'SUCCESS'
 println "Label: ${label}"
 
 pipeline {
-    agent any
+    agent {
+        docker { 
+            image 'sonarsource/sonar-scanner-cli'
+            label 'sonar-scanner-cli'
+        }
+        docker { 
+            image 'node:17-alpine3.14'
+            label 'node-17-alpine3.14'
+        }
+    }
     options {
         timeout(time: 60, unit: 'MINUTES')
         buildDiscarder(logRotator(numToKeepStr: '30'))
