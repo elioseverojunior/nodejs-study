@@ -11,16 +11,7 @@ currentBuild.result = 'SUCCESS'
 println "Label: ${label}"
 
 pipeline {
-    agent {
-        docker { 
-            image 'sonarsource/sonar-scanner-cli'
-            label 'sonar-scanner-cli'
-        }
-        docker { 
-            image 'node:17-alpine3.14'
-            label 'node-17-alpine3.14'
-        }
-    }
+    agent any
     options {
         timeout(time: 60, unit: 'MINUTES')
         buildDiscarder(logRotator(numToKeepStr: '30'))
@@ -29,7 +20,6 @@ pipeline {
         stage('Pre Build') {
             steps {
                 script {
-                    sayHello 'Elio Severo Junior'
                     log.info 'Starting'
                     gitConfig(true)
                     log.info 'Done!'
