@@ -48,6 +48,17 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube') {
+            steps {
+                script {
+                    ansiColor('xterm') {
+                        log.info 'Starting'
+                        sh 'npm test'
+                        log.info 'Done!'
+                    }
+                }
+            }
+        }
     }
     post {
         always {
